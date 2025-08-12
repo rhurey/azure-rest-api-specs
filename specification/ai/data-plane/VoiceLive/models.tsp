@@ -17,7 +17,7 @@ namespace VoiceLive;
 @discriminator("type")
 model ClientEvent {
   /** The type of event. */
-  type: ClientEventType;
+  type: string;
 
   event_id?: string;
 }
@@ -39,7 +39,7 @@ model ClientEventSessionUpdate extends ClientEvent {
   @doc("""
     The event type, must be `session.update`.
     """)
-  type: ClientEventType.session_update;
+  type: "session.update";
 
   // Tool customization: apply enriched request-specific model
   session: RequestSession;
@@ -51,7 +51,7 @@ model ClientEventSessionUpdate extends ClientEvent {
 """)
 model ClientEventSessionAvatarConnect extends ClientEvent {
   @doc("The event type, must be 'session.avatar.connect'.")
-  type: ClientEventType.session_avatar_connect;
+  type: "session.avatar.connect";
 
   @doc("The client's SDP offer.")
   client_sdp: string;
@@ -62,7 +62,7 @@ model ClientEventSessionAvatarConnect extends ClientEvent {
 """)
 model ClientEventInputAudioTurnStart extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.start'.")
-  type: ClientEventType.input_audio_turn_start;
+  type: "input_audio.turn.start";
 
   @doc("Unique identifier for the input audio turn.")
   turn_id: string;
@@ -73,7 +73,7 @@ model ClientEventInputAudioTurnStart extends ClientEvent {
 """)
 model ClientEventInputAudioTurnAppend extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.append'.")
-  type: ClientEventType.input_audio_turn_append;
+  type: "input_audio.turn.append";
 
   @doc("The ID of the turn this audio is part of.")
   turn_id: string;
@@ -87,7 +87,7 @@ model ClientEventInputAudioTurnAppend extends ClientEvent {
 """)
 model ClientEventInputAudioTurnEnd extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.end'.")
-  type: ClientEventType.input_audio_turn_end;
+  type: "input_audio.turn.end";
 
   @doc("The ID of the audio turn being ended.")
   turn_id: string;
@@ -98,7 +98,7 @@ model ClientEventInputAudioTurnEnd extends ClientEvent {
 """)
 model ClientEventInputAudioTurnCancel extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.cancel'.")
-  type: ClientEventType.input_audio_turn_cancel;
+  type: "input_audio.turn.cancel";
 
   @doc("The ID of the turn to cancel.")
   turn_id: string;
@@ -109,7 +109,7 @@ model ClientEventInputAudioTurnCancel extends ClientEvent {
 """)
 model ClientEventInputAudioClear extends ClientEvent {
   @doc("The event type, must be 'input_audio.clear'.")
-  type: ClientEventType.input_audio_clear;
+  type: "input_audio.clear";
 }
 
 // Tool customization: establish custom, enriched discriminated type hierarchy
@@ -132,7 +132,7 @@ model Response {
     The final status of the response (`completed`, `cancelled`, `failed`, or
     `incomplete`).
     """)
-  status?: "completed" | "cancelled" | "failed" | "incomplete" | "in_progress";
+  status?: VoiceLive.ItemStatus;
 
   /** Additional details about the status. */
   status_details?: {
@@ -275,7 +275,7 @@ model ClientEventInputAudioBufferAppend extends ClientEvent {
   @doc("""
     The event type, must be `input_audio_buffer.append`.
     """)
-  type: ClientEventType.input_audio_buffer_append;
+  type: "input_audio_buffer.append";
 
   // Tool customization: use encoded type for audio data
   @doc("""
@@ -302,7 +302,7 @@ model ClientEventInputAudioBufferCommit extends ClientEvent {
   @doc("""
     The event type, must be `input_audio_buffer.commit`.
     """)
-  type: ClientEventType.input_audio_buffer_commit;
+  type: "input_audio_buffer.commit";
 }
 
 // Tool customization (apply_discriminator): apply discriminated type base
@@ -314,7 +314,7 @@ model ClientEventInputAudioBufferClear extends ClientEvent {
   @doc("""
     The event type, must be `input_audio_buffer.clear`.
     """)
-  type: ClientEventType.input_audio_buffer_clear;
+  type: "input_audio_buffer.clear";
 }
 
 // Tool customization (apply_discriminator): apply discriminated type base
@@ -331,7 +331,7 @@ model ClientEventConversationItemCreate extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.create`.
     """)
-  type: ClientEventType.conversation_item_create;
+  type: "conversation.item.create";
 
   @doc("""
     Optional client-generated ID used to identify this event.
@@ -369,7 +369,7 @@ model ClientEventConversationItemTruncate extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.truncate`.
     """)
-  type: ClientEventType.conversation_item_truncate;
+  type: "conversation.item.truncate";
 
   /**
    * The ID of the assistant message item to truncate. Only assistant message
@@ -399,7 +399,7 @@ model ClientEventConversationItemDelete extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.delete`.
     """)
-  type: ClientEventType.conversation_item_delete;
+  type: "conversation.item.delete";
 
   /** The ID of the item to delete. */
   item_id: string;
@@ -427,7 +427,7 @@ model ClientEventResponseCreate extends ClientEvent {
   @doc("""
     The event type, must be `response.create`.
     """)
-  type: ClientEventType.response_create;
+  type: "response.create";
 
   response?: ResponseCreateParams;
 
@@ -447,7 +447,7 @@ model ClientEventResponseCancel extends ClientEvent {
   @doc("""
     The event type, must be `response.cancel`.
     """)
-  type: ClientEventType.response_cancel;
+  type: "response.cancel";
 
   /**
    * A specific response ID to cancel - if not provided, will cancel an
@@ -1237,7 +1237,7 @@ model ConversationItemWithReference {
     The role of the message sender (`user`, `assistant`, `system`), only
     applicable for `message` items.
     """)
-  role?: "user" | "assistant" | "system";
+  role?: VoiceLive.MessageRole;
 
   @doc("""
     The content of the message, applicable for `message` items.
@@ -1283,7 +1283,7 @@ model ClientEventConversationItemRetrieve extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.retrieve`.
     """)
-  type: ClientEventType.conversation_item_retrieve;
+  type: "conversation.item.retrieve";
 
   /** The ID of the item to retrieve. */
   item_id: string;

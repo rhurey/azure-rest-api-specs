@@ -7,34 +7,34 @@ namespace VoiceLive;
 @discriminator("type")
 model ConversationRequestItem {
   ...ConversationItemBase;
-  type: ItemType;
+  type: string;
   id?: string;
 }
 
 @discriminator("role")
 model RequestMessageItem extends ConversationRequestItem {
-  type: ItemType.message;
+  type: "message";
   role: MessageRole;
   status?: ItemStatus;
 }
 
 model RequestSystemMessageItem extends RequestMessageItem {
-  role: MessageRole.system;
+  role: "system";
   content: RequestTextContentPart[];
 }
 
 model RequestUserMessageItem extends RequestMessageItem {
-  role: MessageRole.user;
+  role: "user";
   content: (RequestTextContentPart | RequestAudioContentPart)[];
 }
 
 model RequestAssistantMessageItem extends RequestMessageItem {
-  role: MessageRole.assistant;
+  role: "assistant";
   content: RequestTextContentPart[];
 }
 
 model RequestFunctionCallItem extends ConversationRequestItem {
-  type: ItemType.function_call;
+  type: "function_call";
   name: string;
   call_id: string;
   arguments: string;
@@ -43,7 +43,7 @@ model RequestFunctionCallItem extends ConversationRequestItem {
 
 model RequestFunctionCallOutputItem
   extends ConversationRequestItem {
-  type: ItemType.function_call_output;
+  type: "function_call_output";
   call_id: string;
   output: string;
 }
@@ -52,7 +52,7 @@ model RequestFunctionCallOutputItem
 //   (first discriminator: type = message; second discriminator: no role present)
 
 model RequestMessageReferenceItem { // extends ConversationRequestItem {
-  type: ItemType.message;
+  type: "message";
   id: string;
 }
 
@@ -60,12 +60,12 @@ model RequestMessageReferenceItem { // extends ConversationRequestItem {
 model ConversationResponseItem {
   ...ConversationItemBase;
   object?: "realtime.item";
-  type?: ItemType;
+  type?: string;
   id?: string;
 }
 
 model ResponseMessageItem extends ConversationResponseItem {
-  type: ItemType.message;
+  type: "message";
   role: MessageRole;
   content: ContentPart[];
   status: ItemStatus;
@@ -73,7 +73,7 @@ model ResponseMessageItem extends ConversationResponseItem {
 
 model ResponseFunctionCallItem
   extends ConversationResponseItem {
-  type: ItemType.function_call;
+  type: "function_call";
   name: string;
   call_id: string;
   arguments: string;
@@ -82,16 +82,9 @@ model ResponseFunctionCallItem
 
 model ResponseFunctionCallOutputItem
   extends ConversationResponseItem {
-  type: ItemType.function_call_output;
+  type: "function_call_output";
   call_id: string;
   output: string;
-}
-
-union ItemType {
-  string,
-  message: "message",
-  function_call: "function_call",
-  function_call_output: "function_call_output",
 }
 
 union ItemStatus {
