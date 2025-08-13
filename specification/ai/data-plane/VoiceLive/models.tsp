@@ -32,15 +32,6 @@ model ClientEvent {
           "conversation.item.delete" |
           "response.create" |
           "response.cancel" |
-          "session.avatar.connect" |
-          "input_audio.turn.cancel" |
-          "input_audio.clear" |
-          "conversation.item.create" |
-          "conversation.item.retrieve" |
-          "conversation.item.truncate" |
-          "conversation.item.delete" |
-          "response.create" |
-          "response.cancel" |
           "session.avatar.connect";
 
   event_id?: string;
