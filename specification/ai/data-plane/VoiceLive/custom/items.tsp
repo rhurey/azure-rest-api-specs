@@ -14,7 +14,7 @@ model ConversationRequestItem {
 @discriminator("role")
 model RequestMessageItem extends ConversationRequestItem {
   type: "message";
-  role: MessageRole;
+  role: string;
   status?: ItemStatus;
 }
 
