@@ -82,7 +82,7 @@ alias ForceModelServerEvent =
   ServerEventResponseFunctionCallArgumentsDone |
   ResponseAnimationBlendshapeDeltaEvent |
   ResponseAnimationBlendshapeDoneEvent |
-  ResponseEmotionHypothesisEvent |
+  ResponseEmotionHypothesis |
   ResponseAudioTimestampDeltaEvent |
   ResponseAudioTimestampDoneEvent |
   ResponseAnimationVisemeDeltaEvent |
