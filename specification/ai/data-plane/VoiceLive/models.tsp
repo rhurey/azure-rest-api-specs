@@ -17,7 +17,31 @@ namespace VoiceLive;
 @discriminator("type")
 model ClientEvent {
   /** The type of event. */
-  type: ClientEventType;
+  type:   "session.update" | 
+          "input_audio_buffer.append" |
+          "input_audio_buffer.commit" |
+          "input_audio_buffer.clear" |
+          "input_audio.turn.start" |
+          "input_audio.turn.append" |
+          "input_audio.turn.end" |
+          "input_audio.turn.cancel" |
+          "input_audio.clear" |
+          "conversation.item.create" |
+          "conversation.item.retrieve" |
+          "conversation.item.truncate" |
+          "conversation.item.delete" |
+          "response.create" |
+          "response.cancel" |
+          "session.avatar.connect" |
+          "input_audio.turn.cancel" |
+          "input_audio.clear" |
+          "conversation.item.create" |
+          "conversation.item.retrieve" |
+          "conversation.item.truncate" |
+          "conversation.item.delete" |
+          "response.create" |
+          "response.cancel" |
+          "session.avatar.connect";
 
   event_id?: string;
 }
@@ -39,7 +63,7 @@ model ClientEventSessionUpdate extends ClientEvent {
   @doc("""
     The event type, must be `session.update`.
     """)
-  type: ClientEventType.session_update;
+  type: "session.update";
 
   // Tool customization: apply enriched request-specific model
   session: RequestSession;
@@ -51,7 +75,7 @@ model ClientEventSessionUpdate extends ClientEvent {
 """)
 model ClientEventSessionAvatarConnect extends ClientEvent {
   @doc("The event type, must be 'session.avatar.connect'.")
-  type: ClientEventType.session_avatar_connect;
+  type: "session.avatar.connect";
 
   @doc("The client's SDP offer.")
   client_sdp: string;
@@ -62,7 +86,7 @@ model ClientEventSessionAvatarConnect extends ClientEvent {
 """)
 model ClientEventInputAudioTurnStart extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.start'.")
-  type: ClientEventType.input_audio_turn_start;
+  type: "input_audio.turn.start";
 
   @doc("Unique identifier for the input audio turn.")
   turn_id: string;
@@ -73,7 +97,7 @@ model ClientEventInputAudioTurnStart extends ClientEvent {
 """)
 model ClientEventInputAudioTurnAppend extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.append'.")
-  type: ClientEventType.input_audio_turn_append;
+  type: "input_audio.turn.append";
 
   @doc("The ID of the turn this audio is part of.")
   turn_id: string;
@@ -87,7 +111,7 @@ model ClientEventInputAudioTurnAppend extends ClientEvent {
 """)
 model ClientEventInputAudioTurnEnd extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.end'.")
-  type: ClientEventType.input_audio_turn_end;
+  type: "input_audio.turn.end";
 
   @doc("The ID of the audio turn being ended.")
   turn_id: string;
@@ -98,7 +122,7 @@ model ClientEventInputAudioTurnEnd extends ClientEvent {
 """)
 model ClientEventInputAudioTurnCancel extends ClientEvent {
   @doc("The event type, must be 'input_audio.turn.cancel'.")
-  type: ClientEventType.input_audio_turn_cancel;
+  type: "input_audio.turn.cancel";
 
   @doc("The ID of the turn to cancel.")
   turn_id: string;
@@ -109,7 +133,7 @@ model ClientEventInputAudioTurnCancel extends ClientEvent {
 """)
 model ClientEventInputAudioClear extends ClientEvent {
   @doc("The event type, must be 'input_audio.clear'.")
-  type: ClientEventType.input_audio_clear;
+  type: "input_audio.clear";
 }
 
 // Tool customization: establish custom, enriched discriminated type hierarchy
@@ -275,7 +299,7 @@ model ClientEventInputAudioBufferAppend extends ClientEvent {
   @doc("""
     The event type, must be `input_audio_buffer.append`.
     """)
-  type: ClientEventType.input_audio_buffer_append;
+  type: "input_audio_buffer.append";
 
   // Tool customization: use encoded type for audio data
   @doc("""
@@ -302,7 +326,7 @@ model ClientEventInputAudioBufferCommit extends ClientEvent {
   @doc("""
     The event type, must be `input_audio_buffer.commit`.
     """)
-  type: ClientEventType.input_audio_buffer_commit;
+  type: "input_audio_buffer.commit";
 }
 
 // Tool customization (apply_discriminator): apply discriminated type base
@@ -314,7 +338,7 @@ model ClientEventInputAudioBufferClear extends ClientEvent {
   @doc("""
     The event type, must be `input_audio_buffer.clear`.
     """)
-  type: ClientEventType.input_audio_buffer_clear;
+  type: "input_audio_buffer.clear";
 }
 
 // Tool customization (apply_discriminator): apply discriminated type base
@@ -331,7 +355,7 @@ model ClientEventConversationItemCreate extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.create`.
     """)
-  type: ClientEventType.conversation_item_create;
+  type: "conversation.item.create";
 
   @doc("""
     Optional client-generated ID used to identify this event.
@@ -369,7 +393,7 @@ model ClientEventConversationItemTruncate extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.truncate`.
     """)
-  type: ClientEventType.conversation_item_truncate;
+  type: "conversation.item.truncate";
 
   /**
    * The ID of the assistant message item to truncate. Only assistant message
@@ -399,7 +423,7 @@ model ClientEventConversationItemDelete extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.delete`.
     """)
-  type: ClientEventType.conversation_item_delete;
+  type: "conversation.item.delete";
 
   /** The ID of the item to delete. */
   item_id: string;
@@ -427,7 +451,7 @@ model ClientEventResponseCreate extends ClientEvent {
   @doc("""
     The event type, must be `response.create`.
     """)
-  type: ClientEventType.response_create;
+  type: "response.create";
 
   response?: ResponseCreateParams;
 
@@ -447,7 +471,7 @@ model ClientEventResponseCancel extends ClientEvent {
   @doc("""
     The event type, must be `response.cancel`.
     """)
-  type: ClientEventType.response_cancel;
+  type: "response.cancel";
 
   /**
    * A specific response ID to cancel - if not provided, will cancel an
@@ -466,7 +490,7 @@ model ServerEventError extends ServerEvent {
   @doc("""
     The event type, must be `error`.
     """)
-  type: ServerEventType.error;
+  type: "error";
 
   /** Details of the error. */
   error: {
@@ -497,7 +521,7 @@ model ServerEventSessionCreated extends ServerEvent {
   @doc("""
     The event type, must be `session.created`.
     """)
-  type: ServerEventType.session_created;
+  type: "session.created";
 
   // Tool customization: apply enriched response-specific model
   session: ResponseSession;
@@ -512,7 +536,7 @@ model ServerEventSessionUpdated extends ServerEvent {
   @doc("""
     The event type, must be `session.updated`.
     """)
-  type: ServerEventType.session_updated;
+  type: "session.updated";
 
   // Tool customization: apply enriched response-specific model
   session: ResponseSession;
@@ -521,7 +545,7 @@ model ServerEventSessionUpdated extends ServerEvent {
 @doc("Sent when the server is in the process of establishing an avatar media connection and provides its SDP answer.")
 model ServerEventSessionAvatarConnecting extends ServerEvent {
   @doc("The event type, must be 'session.avatar.connecting'.")
-  type: ServerEventType.session_avatar_connecting;
+  type: "session.avatar.connecting";
 
   @doc("The server's SDP answer for the avatar connection.")
   server_sdp: string;
@@ -536,7 +560,42 @@ model SessionBase {}
 @discriminator("type")
 model ServerEvent {
   /** The type of event. */
-  type: ServerEventType;
+  type:   "error" |
+          "session.avatar.connecting" |
+          "session.created" |
+          "session.updated" |
+          "conversation.item.input_audio_transcription.completed" |
+          "conversation.item.input_audio_transcription.delta" |
+          "conversation.item.input_audio_transcription.failed" |
+          "conversation.item.created" |
+          "conversation.item.retrieved" |
+          "conversation.item.truncated" |
+          "conversation.item.deleted" |
+          "input_audio_buffer.committed" |
+          "input_audio_buffer.cleared" |
+          "input_audio_buffer.speech_started" |
+          "input_audio_buffer.speech_stopped" |
+          "response.created" |
+          "response.done" |
+          "response.output_item.added" |
+          "response.output_item.done" |
+          "response.content_part.added" |
+          "response.content_part.done" |
+          "response.text.delta" |
+          "response.text.done" |
+          "response.audio_transcript.delta" |
+          "response.audio_transcript.done" |
+          "response.audio.delta" |
+          "response.audio.done" |
+          "response.animation_blendshapes.delta" |
+          "response.animation_blendshapes.done" |
+          "response.emotion_hypothesis" |
+          "response.audio_timestamp.delta" |
+          "response.audio_timestamp.done" |
+          "response.animation_viseme.delta" |
+          "response.animation_viseme.done" |
+          "response.function_call_arguments.delta" |
+          "response.function_call_arguments.done";
 
   event_id?: string;
 }
@@ -552,7 +611,7 @@ model ServerEventInputAudioBufferCommitted extends ServerEvent {
   @doc("""
     The event type, must be `input_audio_buffer.committed`.
     """)
-  type: ServerEventType.input_audio_buffer_committed;
+  type: "input_audio_buffer.committed";
 
   /** The ID of the preceding item after which the new item will be inserted. */
   previous_item_id?: string;
@@ -570,7 +629,7 @@ model ServerEventInputAudioBufferCleared extends ServerEvent {
   @doc("""
     The event type, must be `input_audio_buffer.cleared`.
     """)
-  type: ServerEventType.input_audio_buffer_cleared;
+  type: "input_audio_buffer.cleared";
 }
 
 // Tool customization (apply_discriminator): apply discriminated type
@@ -591,7 +650,7 @@ model ServerEventInputAudioBufferSpeechStarted
   @doc("""
     The event type, must be `input_audio_buffer.speech_started`.
     """)
-  type: ServerEventType.input_audio_buffer_speech_started;
+  type: "input_audio_buffer.speech_started";
 
   @doc("""
     Milliseconds from the start of all audio written to the buffer during the
@@ -616,7 +675,7 @@ model ServerEventInputAudioBufferSpeechStopped
   @doc("""
     The event type, must be `input_audio_buffer.speech_stopped`.
     """)
-  type: ServerEventType.input_audio_buffer_speech_stopped;
+  type: "input_audio_buffer.speech_stopped";
 
   @doc("""
     Milliseconds since the session started when speech stopped. This will
@@ -645,7 +704,7 @@ model ServerEventConversationItemCreated extends ServerEvent {
   @doc("""
     The event type, must be `conversation.item.created`.
     """)
-  type: ServerEventType.conversation_item_created;
+  type: "conversation.item.created";
 
   /**
    * The ID of the preceding item in the Conversation context, allows the
@@ -676,7 +735,7 @@ model ServerEventConversationItemInputAudioTranscriptionCompleted
     The event type, must be
     `conversation.item.input_audio_transcription.completed`.
     """)
-  type: ServerEventType.conversation_item_input_audio_transcription_completed;
+  type: "conversation.item.input_audio_transcription.completed";
 
   /** The ID of the user message item containing the audio. */
   item_id: string;
@@ -700,7 +759,7 @@ model ServerEventConversationItemInputAudioTranscriptionFailed
     The event type, must be
     `conversation.item.input_audio_transcription.failed`.
     """)
-  type: ServerEventType.conversation_item_input_audio_transcription_failed;
+  type: "conversation.item.input_audio_transcription.failed";
 
   /** The ID of the user message item. */
   item_id: string;
@@ -725,7 +784,7 @@ model ServerEventConversationItemTruncated extends ServerEvent {
   @doc("""
     The event type, must be `conversation.item.truncated`.
     """)
-  type: ServerEventType.conversation_item_truncated;
+  type: "conversation.item.truncated";
 
   /** The ID of the assistant message item that was truncated. */
   item_id: string;
@@ -749,7 +808,7 @@ model ServerEventConversationItemDeleted extends ServerEvent {
   @doc("""
     The event type, must be `conversation.item.deleted`.
     """)
-  type: ServerEventType.conversation_item_deleted;
+  type: "conversation.item.deleted";
 
   /** The ID of the item that was deleted. */
   item_id: string;
@@ -766,7 +825,7 @@ model ServerEventResponseCreated extends ServerEvent {
   @doc("""
     The event type, must be `response.created`.
     """)
-  type: ServerEventType.response_created;
+  type: "response.created";
 
   response: Response;
 }
@@ -781,7 +840,7 @@ model ServerEventResponseDone extends ServerEvent {
   @doc("""
     The event type, must be `response.done`.
     """)
-  type: ServerEventType.response_done;
+  type: "response.done";
 
   response: Response;
 }
@@ -792,7 +851,7 @@ model ServerEventResponseOutputItemAdded extends ServerEvent {
   @doc("""
     The event type, must be `response.output_item.added`.
     """)
-  type: ServerEventType.response_output_item_added;
+  type: "response.output_item.added";
 
   /** The ID of the Response to which the item belongs. */
   response_id: string;
@@ -813,7 +872,7 @@ model ServerEventResponseOutputItemDone extends ServerEvent {
   @doc("""
     The event type, must be `response.output_item.done`.
     """)
-  type: ServerEventType.response_output_item_done;
+  type: "response.output_item.done";
 
   /** The ID of the Response to which the item belongs. */
   response_id: string;
@@ -834,7 +893,7 @@ model ServerEventResponseContentPartAdded extends ServerEvent {
   @doc("""
     The event type, must be `response.content_part.added`.
     """)
-  type: ServerEventType.response_content_part_added;
+  type: "response.content_part.added";
 
   /** The ID of the response. */
   response_id: string;
@@ -862,7 +921,7 @@ model ServerEventResponseContentPartDone extends ServerEvent {
   @doc("""
     The event type, must be `response.content_part.done`.
     """)
-  type: ServerEventType.response_content_part_done;
+  type: "response.content_part.done";
 
   /** The ID of the response. */
   response_id: string;
@@ -887,7 +946,7 @@ model ServerEventResponseTextDelta extends ServerEvent {
   @doc("""
     The event type, must be `response.text.delta`.
     """)
-  type: ServerEventType.response_text_delta;
+  type: "response.text.delta";
 
   /** The ID of the response. */
   response_id: string;
@@ -914,7 +973,7 @@ model ServerEventResponseTextDone extends ServerEvent {
   @doc("""
     The event type, must be `response.text.done`.
     """)
-  type: ServerEventType.response_text_done;
+  type: "response.text.done";
 
   /** The ID of the response. */
   response_id: string;
@@ -939,7 +998,7 @@ model ServerEventResponseAudioTranscriptDelta
   @doc("""
     The event type, must be `response.audio_transcript.delta`.
     """)
-  type: ServerEventType.response_audio_transcript_delta;
+  type: "response.audio_transcript.delta";
 
   /** The ID of the response. */
   response_id: string;
@@ -968,7 +1027,7 @@ model ServerEventResponseAudioTranscriptDone
   @doc("""
     The event type, must be `response.audio_transcript.done`.
     """)
-  type: ServerEventType.response_audio_transcript_done;
+  type: "response.audio_transcript.done";
 
   /** The ID of the response. */
   response_id: string;
@@ -992,7 +1051,7 @@ model ServerEventResponseAudioDelta extends ServerEvent {
   @doc("""
     The event type, must be `response.audio.delta`.
     """)
-  type: ServerEventType.response_audio_delta;
+  type: "response.audio.delta";
 
   /** The ID of the response. */
   response_id: string;
@@ -1023,7 +1082,7 @@ model ServerEventResponseAudioDone extends ServerEvent {
   @doc("""
     The event type, must be `response.audio.done`.
     """)
-  type: ServerEventType.response_audio_done;
+  type: "response.audio.done";
 
   /** The ID of the response. */
   response_id: string;
@@ -1042,7 +1101,7 @@ model ServerEventResponseAudioDone extends ServerEvent {
 Represents a delta update of blendshape animation frames for a specific output of a response.
 """)
 model ResponseAnimationBlendshapeDeltaEvent extends ServerEvent {
-  type: ServerEventType.response_animation_blendshapes_delta;
+  type: "response.animation_blendshapes.delta";
   response_id: string;
   item_id: string;
   output_index: int32;
@@ -1055,7 +1114,7 @@ model ResponseAnimationBlendshapeDeltaEvent extends ServerEvent {
 Indicates the completion of blendshape animation processing for a specific output of a response.
 """)
 model ResponseAnimationBlendshapeDoneEvent extends ServerEvent {
-  type: ServerEventType.response_animation_blendshapes_done;
+  type: "response.animation_blendshapes.done";
   response_id: string;
   item_id: string;
   output_index: int32;
@@ -1065,7 +1124,7 @@ model ResponseAnimationBlendshapeDoneEvent extends ServerEvent {
 Represents an emotion hypothesis detected from response audio with multiple candidates.
 """)
 model ResponseEmotionHypothesis extends ServerEvent {
-  type: ServerEventType.response_emotion_hypothesis;
+  type: "response.emotion_hypothesis";
   emotion: string;
   candidates: EmotionCandidate[],
   audio_offset_ms: int32;
@@ -1078,7 +1137,7 @@ model ResponseEmotionHypothesis extends ServerEvent {
 Represents a word-level audio timestamp delta for a response.
 """)
 model ResponseAudioTimestampDeltaEvent extends ServerEvent {
-  type: ServerEventType.response_audio_timestamp_delta;
+  type: "response.audio_timestamp.delta";
   response_id: string;
   item_id: string;
   output_index: int32;
@@ -1093,7 +1152,7 @@ model ResponseAudioTimestampDeltaEvent extends ServerEvent {
 Indicates completion of audio timestamp delivery for a response.
 """)
 model ResponseAudioTimestampDoneEvent extends ServerEvent {
-  type: ServerEventType.response_audio_timestamp_done;
+  type: "response.audio_timestamp.done";
   response_id: string;
   item_id: string;
   output_index: int32;
@@ -1104,7 +1163,7 @@ model ResponseAudioTimestampDoneEvent extends ServerEvent {
 Represents a viseme ID delta update for animation based on audio.
 """)
 model ResponseAnimationVisemeDeltaEvent extends ServerEvent {
-  type: ServerEventType.response_animation_viseme_delta;
+  type: "response.animation_viseme.delta";
   response_id: string;
   item_id: string;
   output_index: int32;
@@ -1117,7 +1176,7 @@ model ResponseAnimationVisemeDeltaEvent extends ServerEvent {
 Indicates completion of viseme animation delivery for a response.
 """)
 model ResponseAnimationVisemeDoneEvent extends ServerEvent {
-  type: ServerEventType.response_animation_viseme_done;
+  type: "response.animation_viseme.done";
   response_id: string;
   item_id: string;
   output_index: int32;
@@ -1283,7 +1342,7 @@ model ClientEventConversationItemRetrieve extends ClientEvent {
   @doc("""
     The event type, must be `conversation.item.retrieve`.
     """)
-  type: ClientEventType.conversation_item_retrieve;
+  type: "conversation.item.retrieve";
 
   /** The ID of the item to retrieve. */
   item_id: string;
@@ -1296,7 +1355,7 @@ model ServerEventConversationItemInputAudioTranscriptionDelta
   @doc("""
     The event type, must be `conversation.item.input_audio_transcription.delta`.
     """)
-  type: ServerEventType.conversation_item_input_audio_transcription_delta;
+  type: "conversation.item.input_audio_transcription.delta";
 
   /** The ID of the item. */
   item_id: string;
@@ -1319,7 +1378,7 @@ model ServerEventConversationItemRetrieved extends ServerEvent {
   @doc("""
     The event type, must be `conversation.item.retrieved`.
     """)
-  type: ServerEventType.conversation_item_retrieved;
+  type: "conversation.item.retrieved";
   item_id?: string;
   event_id?: string;
 }
@@ -1336,7 +1395,7 @@ model ServerEventResponseFunctionCallArgumentsDelta
   @doc("""
     The event type, must be `response.function_call_arguments.delta`.
     """)
-  type: ServerEventType.response_function_call_arguments_delta;
+  type: "response.function_call_arguments.delta";
 
   /** The ID of the response. */
   response_id: string;
@@ -1364,7 +1423,7 @@ model ServerEventResponseFunctionCallArgumentsDone
   @doc("""
     The event type, must be `response.function_call_arguments.done`.
     """)
-  type: ServerEventType.response_function_call_arguments_done;
+  type: "response.function_call_arguments.done";
 
   /** The ID of the response. */
   response_id: string;

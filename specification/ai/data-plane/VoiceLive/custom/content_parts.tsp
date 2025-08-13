@@ -12,25 +12,25 @@ union ContentPartType {
 
 @discriminator("type")
 model ContentPart {
-  type: ContentPartType;
+  type: "input_text" | "input_audio" | "text" | "audio";
 }
 
 model RequestTextContentPart extends ContentPart {
-  type: ContentPartType.input_text;
+  type: "input_text";
   text?: string;
 }
 
 model RequestAudioContentPart extends ContentPart {
-  type: ContentPartType.input_audio;
+  type: "input_audio";
   transcript?: string;
 }
 
 model ResponseTextContentPart extends ContentPart {
-  type: ContentPartType.text;
+  type: "text";
   text?: string;
 }
 
 model ResponseAudioContentPart extends ContentPart {
-  type: ContentPartType.audio;
+  type: "audio";
   transcript?: string;
 }

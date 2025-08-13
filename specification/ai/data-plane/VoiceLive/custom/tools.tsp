@@ -16,14 +16,14 @@ union ToolType {
  */
 @discriminator("type")
 model Tool {
-  type: ToolType;
+  type: "function";
 }
 
 /**
  * The definition of a function tool as used by the voicelive endpoint.
  */
 model FunctionTool extends Tool {
-  type: ToolType.function;
+  type: "function";
   name: string;
   description?: string;
   parameters?: unknown;
@@ -59,14 +59,14 @@ union ToolChoiceLiteral {
  */
 @discriminator("type")
 model ToolChoiceObject {
-  type: ToolType;
+  type: "function";
 }
 
 /**
  * The representation of a voicelive tool_choice selecting a named function tool.
  */
 model ToolChoiceFunctionObject extends ToolChoiceObject {
-  type: ToolType.function;
+  type: "function";
   function: {
     name: string;
   };
