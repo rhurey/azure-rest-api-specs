@@ -7,18 +7,14 @@ namespace VoiceLive;
 @discriminator("type")
 model ConversationRequestItem {
   ...ConversationItemBase;
-  type:   "message" |
-          "function_call" |
-          "function_call_output";
+  type:   string;
   id?: string;
 }
 
 @discriminator("role")
 model RequestMessageItem extends ConversationRequestItem {
   type: "message";
-  role:   "system" |
-          "user" |
-          "assistant";
+  role:   string;
   status?: ItemStatus;
 }
 
@@ -64,9 +60,7 @@ model RequestMessageReferenceItem { // extends ConversationRequestItem {
 model ConversationResponseItem {
   ...ConversationItemBase;
   object?: "realtime.item";
-  type:   "message" |
-          "function_call" |
-          "function_call_output";
+    type:   string;
   id?: string;
 }
 

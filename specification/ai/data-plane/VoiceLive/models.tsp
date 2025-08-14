@@ -17,22 +17,7 @@ namespace VoiceLive;
 @discriminator("type")
 model ClientEvent {
   /** The type of event. */
-  type:   "session.update" | 
-          "input_audio_buffer.append" |
-          "input_audio_buffer.commit" |
-          "input_audio_buffer.clear" |
-          "input_audio.turn.start" |
-          "input_audio.turn.append" |
-          "input_audio.turn.end" |
-          "input_audio.turn.cancel" |
-          "input_audio.clear" |
-          "conversation.item.create" |
-          "conversation.item.retrieve" |
-          "conversation.item.truncate" |
-          "conversation.item.delete" |
-          "response.create" |
-          "response.cancel" |
-          "session.avatar.connect";
+  type: string;
 
   event_id?: string;
 }
@@ -551,42 +536,7 @@ model SessionBase {}
 @discriminator("type")
 model ServerEvent {
   /** The type of event. */
-  type:   "error" |
-          "session.avatar.connecting" |
-          "session.created" |
-          "session.updated" |
-          "conversation.item.input_audio_transcription.completed" |
-          "conversation.item.input_audio_transcription.delta" |
-          "conversation.item.input_audio_transcription.failed" |
-          "conversation.item.created" |
-          "conversation.item.retrieved" |
-          "conversation.item.truncated" |
-          "conversation.item.deleted" |
-          "input_audio_buffer.committed" |
-          "input_audio_buffer.cleared" |
-          "input_audio_buffer.speech_started" |
-          "input_audio_buffer.speech_stopped" |
-          "response.created" |
-          "response.done" |
-          "response.output_item.added" |
-          "response.output_item.done" |
-          "response.content_part.added" |
-          "response.content_part.done" |
-          "response.text.delta" |
-          "response.text.done" |
-          "response.audio_transcript.delta" |
-          "response.audio_transcript.done" |
-          "response.audio.delta" |
-          "response.audio.done" |
-          "response.animation_blendshapes.delta" |
-          "response.animation_blendshapes.done" |
-          "response.emotion_hypothesis" |
-          "response.audio_timestamp.delta" |
-          "response.audio_timestamp.done" |
-          "response.animation_viseme.delta" |
-          "response.animation_viseme.done" |
-          "response.function_call_arguments.delta" |
-          "response.function_call_arguments.done";
+  type: string;
 
   event_id?: string;
 }

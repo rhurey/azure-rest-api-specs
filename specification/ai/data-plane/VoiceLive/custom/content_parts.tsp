@@ -12,7 +12,7 @@ union ContentPartType {
 
 @discriminator("type")
 model ContentPart {
-  type: "input_text" | "input_audio" | "text" | "audio";
+  type: string;
 }
 
 model RequestTextContentPart extends ContentPart {
