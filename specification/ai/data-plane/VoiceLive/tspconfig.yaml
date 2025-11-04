@@ -56,7 +56,6 @@ options:
     custom-types-subpackage: models
     flavor: azure
     partial-update: true
-    custom-types: "AzureVoice,AzureCustomVoice,AzureStandardVoice,AzurePersonalVoice,ToolChoice,ToolChoiceSelection,ToolChoiceFunctionSelection,ToolChoiceLiteral,AssistantMessageItem,AudioEchoCancellation,AudioInputTranscriptionOptionsModel,ClientEventSessionUpdate,ConversationRequestItem,FunctionCallItem,MessageContentPart,MessageItem,OpenAIVoice,ResponseCreateParams,ResponseFailedDetails,SessionResponse,SessionResponseItem,SessionUpdate,SessionUpdateConversationItemDeleted,SessionUpdateConversationItemRetrieved,SessionUpdateConversationItemTruncated,SystemMessageItem,TurnDetection,UserMessageItem,VoiceLiveContentPart,VoiceLiveSessionOptions,VoiceLiveSessionResponse,VoiceLiveToolDefinition"
-    customization-class: "src/main/java/com/azure/ai/voicelive/models/JsonReaderHelper.java,src/main/java/com/azure/ai/voicelive/models/VoiceProvider.java"
+    custom-types: "JsonReaderHelper,VoiceProvider,AzureVoice,AzureCustomVoice,AzureStandardVoice,AzurePersonalVoice,ToolChoice,ToolChoiceSelection,ToolChoiceFunctionSelection,ToolChoiceLiteral,AssistantMessageItem,AudioEchoCancellation,AudioInputTranscriptionOptionsModel,ClientEventSessionUpdate,ConversationRequestItem,FunctionCallItem,MessageContentPart,MessageItem,OpenAIVoice,ResponseCreateParams,ResponseFailedDetails,SessionResponse,SessionResponseItem,SessionUpdate,SessionUpdateConversationItemDeleted,SessionUpdateConversationItemRetrieved,SessionUpdateConversationItemTruncated,SystemMessageItem,TurnDetection,UserMessageItem,VoiceLiveContentPart,VoiceLiveSessionOptions,VoiceLiveSessionResponse,VoiceLiveToolDefinition"
     dev-options:
       loglevel: info
