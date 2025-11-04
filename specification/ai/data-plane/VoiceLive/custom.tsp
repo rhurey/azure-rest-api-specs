@@ -155,10 +155,8 @@ union AzureVoiceType {
 /**
  * Base class for all Azure voice configurations.
  * Extends Voice (VoiceProvider) base class.
- * Inherits discriminator from Voice, so no separate @discriminator needed.
  */
 @usage(DualUsage)
-@clientName("AzureVoice", "java")
 model AzureVoice extends Voice {
   /** The type of Azure voice. */
   type: AzureVoiceType;
@@ -168,6 +166,7 @@ model AzureVoice extends Voice {
 #suppress "@azure-tools/typespec-azure-core/casing-style" // Service message format is snake_case to remain close to OpenAI style.
 @usage(DualUsage)
 model AzureCustomVoice extends AzureVoice {
+  /** The type of the voice. */
   type: AzureVoiceType.azure_custom;
 
   /** Voice name cannot be empty. */
@@ -196,6 +195,7 @@ model AzureCustomVoice extends AzureVoice {
 #suppress "@azure-tools/typespec-azure-core/casing-style" // Service message format is snake_case to remain close to OpenAI style.
 @usage(DualUsage)
 model AzureStandardVoice extends AzureVoice {
+  /** The type of the voice. */
   type: AzureVoiceType.azure_standard;
 
   /** Voice name cannot be empty. */
@@ -219,6 +219,7 @@ model AzureStandardVoice extends AzureVoice {
 /** Azure personal voice configuration. */
 @usage(DualUsage)
 model AzurePersonalVoice extends AzureVoice {
+  /** The type of the voice. */
   type: AzureVoiceType.azure_personal;
 
   /** Voice name cannot be empty. */
@@ -264,10 +265,9 @@ union VoiceType {
  * Base voice provider for all voice configurations.
  * Maps to VoiceProvider base class in Java SDK.
  * OpenAIVoice and AzureVoice extend this base.
+ * No discriminator to allow flexible inheritance hierarchy in generated code.
  */
-@discriminator("type")
 @usage(DualUsage)
-@clientName("VoiceProvider", "java")
 model Voice {
   /** The type of voice (openai or azure types). */
   type: VoiceType;
