@@ -127,8 +127,8 @@ union OAIVoice {
  * This provides a unified interface for OpenAI voices, complementing the
  * existing string-based OAIVoice for backward compatibility.
  */
-@usage(RequestUsage)
-model OpenAIVoice {
+@usage(DualUsage)
+model OpenAIVoice extends Voice {
   /** The type of the voice. */
   type: "openai";
 
@@ -137,14 +137,6 @@ model OpenAIVoice {
 }
 
 // --- Azure voices ----------------------------------------------------------
-
-/** Base for Azure voice configurations. */
-@discriminator("type")
-@usage(DualUsage)
-model AzureVoice {
-  /** The type of the Azure voice. */
-  type: AzureVoiceType;
-}
 
 /** Union of all supported Azure voice types. */
 union AzureVoiceType {
@@ -159,6 +151,19 @@ union AzureVoiceType {
   /** Azure personal voice. */
   azure_personal: "azure-personal",
 }
+
+/**
+ * Base class for all Azure voice configurations.
+ * Extends Voice (VoiceProvider) base class.
+ * Inherits discriminator from Voice, so no separate @discriminator needed.
+ */
+@usage(DualUsage)
+@clientName("AzureVoice", "java")
+model AzureVoice extends Voice {
+  /** The type of Azure voice. */
+  type: AzureVoiceType;
+}
+
 /** Azure custom voice configuration. */
 #suppress "@azure-tools/typespec-azure-core/casing-style" // Service message format is snake_case to remain close to OpenAI style.
 @usage(DualUsage)
@@ -242,14 +247,30 @@ union PersonalVoiceModels {
   "PhoenixV2Neural",
 }
 
-// --- Top-level Voice union -------------------------------------------------
+// --- Top-level Voice (VoiceProvider) -------------------------------------------------
 
-/** Union of all supported voice configurations. */
-#suppress "@azure-tools/typespec-autorest/union-unsupported" // This is how the service implemented the model...
-union Voice {
-  OAIVoice,
-  OpenAIVoice,
-  AzureVoice, // includes AzureCustomVoice, CustomVoice, AzurePersonalVoice
+/** Voice type union. */
+union VoiceType {
+  string,
+  
+  /** OpenAI voice. */
+  openai: "openai",
+  
+  /** Azure voice types. */
+  AzureVoiceType,
+}
+
+/** 
+ * Base voice provider for all voice configurations.
+ * Maps to VoiceProvider base class in Java SDK.
+ * OpenAIVoice and AzureVoice extend this base.
+ */
+@discriminator("type")
+@usage(DualUsage)
+@clientName("VoiceProvider", "java")
+model Voice {
+  /** The type of voice (openai or azure types). */
+  type: VoiceType;
 }
 
 /** Input audio format types supported. */

@@ -150,6 +150,7 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ToolChoiceFunctionObject, Access.internal, "csharp");
 @@access(VoiceLive.ToolChoiceObject, Access.internal, "csharp");
 
+@@clientName(VoiceLive.Voice, "VoiceProvider", "csharp");
 @@clientName(VoiceLive.Modality, "InteractionModality", "csharp");
 @@clientName(VoiceLive.Animation, "AnimationOptions", "csharp");
 @@clientName(VoiceLive.Tool, "VoiceLiveToolInvocation", "csharp");
@@ -441,6 +442,7 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ToolChoice, Access.public, "java");
 @@access(VoiceLive.Voice, Access.public, "java");
 
+@@clientName(VoiceLive.Voice, "VoiceProvider", "java");
 @@clientName(VoiceLive.OAIVoice, "OpenAIVoiceName", "java");
 @@clientName(VoiceLive.ToolChoiceObject, "ToolChoiceSelection", "java");
 @@clientName(VoiceLive.ToolChoiceFunctionObject,
