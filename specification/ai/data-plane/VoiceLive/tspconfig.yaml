@@ -56,32 +56,6 @@ options:
     custom-types-subpackage: implementation.models
     flavor: azure
     partial-update: true
-    custom-types:
-      - AssistantMessageItem
-      - AudioEchoCancellation
-      - AudioInputTranscriptionOptionsModel
-      - AzureVoice
-      - ClientEventSessionUpdate
-      - ConversationRequestItem
-      - FunctionCallItem
-      - MessageContentPart
-      - MessageItem
-      - OpenAIVoice
-      - ResponseCreateParams
-      - ResponseFailedDetails
-      - SessionResponse
-      - SessionResponseItem
-      - SessionUpdate
-      - SessionUpdateConversationItemDeleted
-      - SessionUpdateConversationItemRetrieved
-      - SessionUpdateConversationItemTruncated
-      - SystemMessageItem
-      - ToolChoiceSelection
-      - TurnDetection
-      - UserMessageItem
-      - VoiceLiveContentPart
-      - VoiceLiveSessionOptions
-      - VoiceLiveSessionResponse
-      - VoiceLiveToolDefinition
+    custom-types: "AssistantMessageItem,AudioEchoCancellation,AudioInputTranscriptionOptionsModel,AzureVoice,ClientEventSessionUpdate,ConversationRequestItem,FunctionCallItem,MessageContentPart,MessageItem,OpenAIVoice,ResponseCreateParams,ResponseFailedDetails,SessionResponse,SessionResponseItem,SessionUpdate,SessionUpdateConversationItemDeleted,SessionUpdateConversationItemRetrieved,SessionUpdateConversationItemTruncated,SystemMessageItem,ToolChoiceSelection,TurnDetection,UserMessageItem,VoiceLiveContentPart,VoiceLiveSessionOptions,VoiceLiveSessionResponse,VoiceLiveToolDefinition"
     dev-options:
       loglevel: info
