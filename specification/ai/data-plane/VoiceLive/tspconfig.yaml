@@ -53,7 +53,7 @@ options:
     emitter-output-dir: "{output-dir}/{service-dir}/azure-ai-voicelive"
     namespace: com.azure.ai.voicelive
     use-eclipse-language-server: false
-    custom-types-subpackage: models
+    custom-types-subpackage: implementation.models
     flavor: azure
     partial-update: true
     custom-types: "VoiceProvider,AzureVoice,AzureCustomVoice,AzureStandardVoice,AzurePersonalVoice,ToolChoiceSelection,ToolChoiceFunctionSelection,ToolChoiceLiteral,AssistantMessageItem,AudioEchoCancellation,AudioInputTranscriptionOptionsModel,ClientEventSessionUpdate,ConversationRequestItem,FunctionCallItem,MessageContentPart,MessageItem,OpenAIVoice,ResponseCreateParams,ResponseFailedDetails,SessionResponse,SessionResponseItem,SessionUpdate,SessionUpdateConversationItemDeleted,SessionUpdateConversationItemRetrieved,SessionUpdateConversationItemTruncated,SystemMessageItem,TurnDetection,UserMessageItem,VoiceLiveContentPart,VoiceLiveSessionOptions,VoiceLiveSessionResponse,VoiceLiveToolDefinition"
