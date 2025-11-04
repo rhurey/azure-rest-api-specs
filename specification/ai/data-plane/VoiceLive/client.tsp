@@ -438,9 +438,6 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ServerEventResponseTextDone, Access.public, "java");
 @@access(VoiceLive.ServerEventSessionUpdated, Access.public, "java");
 
-@@access(VoiceLive.ToolChoice, Access.public, "java");
-@@access(VoiceLive.Voice, Access.public, "java");
-
 @@clientName(VoiceLive.OAIVoice, "OpenAIVoiceName", "java");
 @@clientName(VoiceLive.ToolChoiceObject, "ToolChoiceSelection", "java");
 @@clientName(VoiceLive.ToolChoiceFunctionObject,
@@ -658,3 +655,38 @@ using Azure.ClientGenerator.Core;
   "java"
 );
 @@clientName(VoiceLive.Background, "VideoBackground", "java");
+
+// Mark Voice-related models as internal for Java with Internal suffix
+@@access(VoiceLive.Voice, Access.internal, "java");
+@@clientName(VoiceLive.Voice, "VoiceInternal", "java");
+
+@@access(VoiceLive.OpenAIVoice, Access.internal, "java");
+@@clientName(VoiceLive.OpenAIVoice, "OpenAIVoiceInternal", "java");
+
+@@access(VoiceLive.AzureVoice, Access.internal, "java");
+@@clientName(VoiceLive.AzureVoice, "AzureVoiceInternal", "java");
+
+@@access(VoiceLive.AzureCustomVoice, Access.internal, "java");
+@@clientName(VoiceLive.AzureCustomVoice, "AzureCustomVoiceInternal", "java");
+
+@@access(VoiceLive.AzureStandardVoice, Access.internal, "java");
+@@clientName(VoiceLive.AzureStandardVoice, "AzureStandardVoiceInternal", "java");
+
+@@access(VoiceLive.AzurePersonalVoice, Access.internal, "java");
+@@clientName(VoiceLive.AzurePersonalVoice, "AzurePersonalVoiceInternal", "java");
+
+@@access(VoiceLive.FunctionTool, Access.internal, "java");
+@@clientName(VoiceLive.FunctionTool, "FunctionToolInternal", "java");
+
+@@access(VoiceLive.ToolChoice, Access.internal, "java");
+@@clientName(VoiceLive.ToolChoice, "ToolChoiceInternal", "java");
+
+@@access(VoiceLive.ToolChoiceObject, Access.internal, "java");
+@@clientName(VoiceLive.ToolChoiceObject, "ToolChoiceObjectInternal", "java");
+
+@@access(VoiceLive.ToolChoiceFunctionObject, Access.internal, "java");
+@@clientName(VoiceLive.ToolChoiceFunctionObject, "ToolChoiceFunctionObjectInternal", "java");
+
+// Mark ContentPart as internal for Java with Internal suffix
+@@access(VoiceLive.ContentPart, Access.internal, "java");
+@@clientName(VoiceLive.ContentPart, "ContentPartInternal", "java");

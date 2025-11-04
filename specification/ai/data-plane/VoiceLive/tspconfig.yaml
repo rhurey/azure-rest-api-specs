@@ -54,7 +54,7 @@ options:
     namespace: com.azure.ai.voicelive
     use-eclipse-language-server: false
     custom-types-subpackage: models
-    custom-types: "VoiceProvider,OpenAIVoice,AzureVoice,AzureCustomVoice,AzureStandardVoice,AzurePersonalVoice"
+
     flavor: azure
     partial-update: true
     models-subpackage: models
