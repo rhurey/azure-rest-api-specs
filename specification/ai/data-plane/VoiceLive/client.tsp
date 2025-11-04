@@ -438,7 +438,6 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ServerEventResponseTextDone, Access.public, "java");
 @@access(VoiceLive.ServerEventSessionUpdated, Access.public, "java");
 
-@@access(VoiceLive.ToolChoice, Access.public, "java");
 @@access(VoiceLive.Voice, Access.public, "java");
 
 @@clientName(VoiceLive.OAIVoice, "OpenAIVoiceName", "java");
