@@ -138,8 +138,11 @@ model OpenAIVoice {
 
 // --- Azure voices ----------------------------------------------------------
 
-/** Base for Azure voice configurations. */
-@discriminator("type")
+/** 
+ * Base for Azure voice configurations.
+ * In Java SDK, this extends VoiceProvider (custom implementation).
+ * No discriminator to allow custom-types to skip generation.
+ */
 @usage(DualUsage)
 model AzureVoice {
   /** The type of the Azure voice. */
