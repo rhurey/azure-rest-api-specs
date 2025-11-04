@@ -52,9 +52,10 @@ options:
   "@azure-tools/typespec-java":
     emitter-output-dir: "{output-dir}/{service-dir}/azure-ai-voicelive"
     namespace: com.azure.ai.voicelive
-    flavor: azure
     use-eclipse-language-server: false
     custom-types-subpackage: models
-    custom-types: "AssistantMessageItem,AudioEchoCancellation,AudioInputTranscriptionOptionsModel,AzureVoice,AzureCustomVoice,AzureStandardVoice,AzurePersonalVoice,ClientEventSessionUpdate,ConversationRequestItem,FunctionCallItem,MessageContentPart,MessageItem,OpenAIVoice,ResponseCreateParams,ResponseFailedDetails,SessionResponse,SessionResponseItem,SessionUpdate,SessionUpdateConversationItemDeleted,SessionUpdateConversationItemRetrieved,SessionUpdateConversationItemTruncated,SystemMessageItem,ToolChoiceSelection,ToolChoice,ToolChoiceFunctionSelection,ToolChoiceLiteral,TurnDetection,UserMessageItem,VoiceLiveContentPart,VoiceLiveSessionOptions,VoiceLiveSessionResponse,VoiceLiveToolDefinition"
+    flavor: azure
+    partial-update: true
+    custom-types: "AzureVoice,AzureCustomVoice,AzureStandardVoice,AzurePersonalVoice,ToolChoice,ToolChoiceSelection,ToolChoiceFunctionSelection,ToolChoiceLiteral,AssistantMessageItem,AudioEchoCancellation,AudioInputTranscriptionOptionsModel,ClientEventSessionUpdate,ConversationRequestItem,FunctionCallItem,MessageContentPart,MessageItem,OpenAIVoice,ResponseCreateParams,ResponseFailedDetails,SessionResponse,SessionResponseItem,SessionUpdate,SessionUpdateConversationItemDeleted,SessionUpdateConversationItemRetrieved,SessionUpdateConversationItemTruncated,SystemMessageItem,TurnDetection,UserMessageItem,VoiceLiveContentPart,VoiceLiveSessionOptions,VoiceLiveSessionResponse,VoiceLiveToolDefinition"
     dev-options:
       loglevel: info
