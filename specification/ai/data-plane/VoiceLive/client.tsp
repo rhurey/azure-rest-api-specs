@@ -362,7 +362,7 @@ using Azure.ClientGenerator.Core;
 @@clientName(VoiceLive.Background, "VideoBackground", "csharp");
 @@alternateType(VoiceLive.RequestSession.turn_detection, unknown, "csharp");
 
-@@access(VoiceLive.ClientEventSessionUpdate, Access.public, "java");
+@@access(VoiceLive.ClientEventSessionUpdate, Access.internal, "java");
 @@access(VoiceLive.ClientEventInputAudioBufferAppend, Access.public, "java");
 @@access(VoiceLive.ClientEventInputAudioBufferCommit, Access.public, "java");
 @@access(VoiceLive.ClientEventInputAudioBufferClear, Access.public, "java");
@@ -375,7 +375,7 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ClientEventConversationItemRetrieve, Access.public, "java");
 @@access(VoiceLive.ClientEventConversationItemTruncate, Access.public, "java");
 @@access(VoiceLive.ClientEventConversationItemDelete, Access.public, "java");
-@@access(VoiceLive.ClientEventResponseCreate, Access.public, "java");
+@@access(VoiceLive.ClientEventResponseCreate, Access.internal, "java");
 @@access(VoiceLive.ClientEventResponseCancel, Access.public, "java");
 @@access(VoiceLive.ClientEventSessionAvatarConnect, Access.public, "java");
 
@@ -383,7 +383,6 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ServerEventSessionCreated, Access.public, "java");
 @@access(VoiceLive.ServerEventResponseAudioDelta, Access.public, "java");
 @@access(VoiceLive.ResponseItem, Access.public, "java");
-@@access(VoiceLive.Response, Access.public, "java");
 @@access(VoiceLive.ServerEventConversationItemCreated, Access.public, "java");
 @@access(VoiceLive.ServerEventConversationItemDeleted, Access.public, "java");
 @@access(VoiceLive.ServerEventConversationItemInputAudioTranscriptionCompleted,
@@ -457,8 +456,6 @@ using Azure.ClientGenerator.Core;
 @@clientName(VoiceLive.VideoCrop.top_left, "TopLeftInternal", "java");
 @@clientName(VoiceLive.Response, "SessionResponse", "java");
 @@clientName(VoiceLive.AgentConfig, "RespondingAgentOptions", "java");
-@@clientName(VoiceLive.FunctionTool, "VoiceLiveFunctionDefinition", "java");
-@@clientName(VoiceLive.Tool, "VoiceLiveToolDefinition", "java");
 @@clientName(VoiceLive.ContentPart, "VoiceLiveContentPart", "java");
 @@clientName(VoiceLive.MessageRole, "ResponseMessageRole", "java");
 @@clientName(VoiceLive.ResponseItem, "SessionResponseItem", "java");
@@ -712,63 +709,9 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ResponseCreateParams, Access.internal, "java");
 @@clientName(VoiceLive.ResponseCreateParams, "ResponseCreateParamsInternal", "java");
 
+@@clientName(VoiceLive.ClientEventResponseCreate, "ClientEventResponseCreateInternal", "java");
+@@clientName(VoiceLive.ClientEventSessionUpdate, "ClientEventSessionUpdateInternal", "java");
+
 // Mark ContentPart as internal for Java with Internal suffix
 @@access(VoiceLive.ContentPart, Access.internal, "java");
 @@clientName(VoiceLive.ContentPart, "ContentPartInternal", "java");
-
-// Mark all ContentPart subclasses as internal for Java
-@@access(VoiceLive.RequestTextContentPart, Access.internal, "java");
-@@clientName(VoiceLive.RequestTextContentPart, "RequestTextContentPartInternal", "java");
-
-@@access(VoiceLive.RequestAudioContentPart, Access.internal, "java");
-@@clientName(VoiceLive.RequestAudioContentPart, "RequestAudioContentPartInternal", "java");
-
-@@access(VoiceLive.ResponseTextContentPart, Access.internal, "java");
-@@clientName(VoiceLive.ResponseTextContentPart, "ResponseTextContentPartInternal", "java");
-
-@@access(VoiceLive.ResponseAudioContentPart, Access.internal, "java");
-@@clientName(VoiceLive.ResponseAudioContentPart, "ResponseAudioContentPartInternal", "java");
-
-// Mark Item models as internal for Java
-@@access(VoiceLive.ConversationRequestItem, Access.internal, "java");
-@@clientName(VoiceLive.ConversationRequestItem, "ConversationRequestItemInternal", "java");
-
-@@access(VoiceLive.MessageItem, Access.internal, "java");
-@@clientName(VoiceLive.MessageItem, "MessageItemInternal", "java");
-
-@@access(VoiceLive.SystemMessageItem, Access.internal, "java");
-@@clientName(VoiceLive.SystemMessageItem, "SystemMessageItemInternal", "java");
-
-@@access(VoiceLive.UserMessageItem, Access.internal, "java");
-@@clientName(VoiceLive.UserMessageItem, "UserMessageItemInternal", "java");
-
-@@access(VoiceLive.AssistantMessageItem, Access.internal, "java");
-@@clientName(VoiceLive.AssistantMessageItem, "AssistantMessageItemInternal", "java");
-
-@@access(VoiceLive.FunctionCallItem, Access.internal, "java");
-@@clientName(VoiceLive.FunctionCallItem, "FunctionCallItemInternal", "java");
-
-@@access(VoiceLive.FunctionCallOutputItem, Access.internal, "java");
-@@clientName(VoiceLive.FunctionCallOutputItem, "FunctionCallOutputItemInternal", "java");
-
-@@access(VoiceLive.ResponseMessageItem, Access.internal, "java");
-@@clientName(VoiceLive.ResponseMessageItem, "ResponseMessageItemInternal", "java");
-
-@@access(VoiceLive.ResponseFunctionCallItem, Access.internal, "java");
-@@clientName(VoiceLive.ResponseFunctionCallItem, "ResponseFunctionCallItemInternal", "java");
-
-@@access(VoiceLive.ResponseFunctionCallOutputItem, Access.internal, "java");
-@@clientName(VoiceLive.ResponseFunctionCallOutputItem, "ResponseFunctionCallOutputItemInternal", "java");
-
-// Mark MessageContentPart hierarchy as internal for Java
-@@access(VoiceLive.MessageContentPart, Access.internal, "java");
-@@clientName(VoiceLive.MessageContentPart, "MessageContentPartInternal", "java");
-
-@@access(VoiceLive.InputTextContentPart, Access.internal, "java");
-@@clientName(VoiceLive.InputTextContentPart, "InputTextContentPartInternal", "java");
-
-@@access(VoiceLive.InputAudioContentPart, Access.internal, "java");
-@@clientName(VoiceLive.InputAudioContentPart, "InputAudioContentPartInternal", "java");
-
-@@access(VoiceLive.OutputTextContentPart, Access.internal, "java");
-@@clientName(VoiceLive.OutputTextContentPart, "OutputTextContentPartInternal", "java");
