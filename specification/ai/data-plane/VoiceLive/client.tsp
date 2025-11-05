@@ -660,6 +660,9 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.Voice, Access.internal, "java");
 @@clientName(VoiceLive.Voice, "VoiceInternal", "java");
 
+@@access(VoiceLive.OAIVoice, Access.internal, "java");
+@@clientName(VoiceLive.OAIVoice, "OAIVoiceInternal", "java");
+
 @@access(VoiceLive.OpenAIVoice, Access.internal, "java");
 @@clientName(VoiceLive.OpenAIVoice, "OpenAIVoiceInternal", "java");
 

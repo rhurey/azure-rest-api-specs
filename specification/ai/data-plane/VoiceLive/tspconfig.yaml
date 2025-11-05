@@ -54,10 +54,8 @@ options:
     namespace: com.azure.ai.voicelive
     use-eclipse-language-server: false
     custom-types-subpackage: models
-
     flavor: azure
     partial-update: true
-    models-subpackage: models
     arm: false
     dev-options:
       loglevel: info
