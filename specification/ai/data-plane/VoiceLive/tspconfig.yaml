@@ -56,7 +56,6 @@ options:
     custom-types-subpackage: models
     flavor: azure
     partial-update: true
-    models-subpackage: implementation.models
     arm: false
     dev-options:
       loglevel: info
