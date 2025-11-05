@@ -656,6 +656,10 @@ using Azure.ClientGenerator.Core;
 );
 @@clientName(VoiceLive.Background, "VideoBackground", "java");
 
+// Mark public enums that users need to reference
+@@access(VoiceLive.AzureVoiceType, Access.public, "java");
+@@access(VoiceLive.PersonalVoiceModels, Access.public, "java");
+
 // Mark Voice-related models as internal for Java with Internal suffix
 @@access(VoiceLive.Voice, Access.internal, "java");
 @@clientName(VoiceLive.Voice, "VoiceInternal", "java");
@@ -677,6 +681,10 @@ using Azure.ClientGenerator.Core;
 
 @@access(VoiceLive.AzurePersonalVoice, Access.internal, "java");
 @@clientName(VoiceLive.AzurePersonalVoice, "AzurePersonalVoiceInternal", "java");
+
+// Mark Tool-related models as internal for Java with Internal suffix
+@@access(VoiceLive.Tool, Access.internal, "java");
+@@clientName(VoiceLive.Tool, "ToolInternal", "java");
 
 @@access(VoiceLive.FunctionTool, Access.internal, "java");
 @@clientName(VoiceLive.FunctionTool, "FunctionToolInternal", "java");
@@ -703,3 +711,7 @@ using Azure.ClientGenerator.Core;
 
 @@access(VoiceLive.ResponseCreateParams, Access.internal, "java");
 @@clientName(VoiceLive.ResponseCreateParams, "ResponseCreateParamsInternal", "java");
+
+// Mark ContentPart as internal for Java with Internal suffix
+@@access(VoiceLive.ContentPart, Access.internal, "java");
+@@clientName(VoiceLive.ContentPart, "ContentPartInternal", "java");
