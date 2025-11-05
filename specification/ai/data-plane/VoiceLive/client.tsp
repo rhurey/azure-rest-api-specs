@@ -690,3 +690,17 @@ using Azure.ClientGenerator.Core;
 // Mark ContentPart as internal for Java with Internal suffix
 @@access(VoiceLive.ContentPart, Access.internal, "java");
 @@clientName(VoiceLive.ContentPart, "ContentPartInternal", "java");
+
+// Mark Session-related models as internal for Java with Internal suffix
+@@access(VoiceLive.RequestSession, Access.internal, "java");
+@@clientName(VoiceLive.RequestSession, "VoiceLiveSessionOptionsInternal", "java");
+
+@@access(VoiceLive.ResponseSession, Access.internal, "java");
+@@clientName(VoiceLive.ResponseSession, "VoiceLiveSessionResponseInternal", "java");
+
+// Mark Response-related models as internal for Java with Internal suffix
+@@access(VoiceLive.Response, Access.internal, "java");
+@@clientName(VoiceLive.Response, "SessionResponseInternal", "java");
+
+@@access(VoiceLive.ResponseCreateParams, Access.internal, "java");
+@@clientName(VoiceLive.ResponseCreateParams, "ResponseCreateParamsInternal", "java");
