@@ -687,10 +687,6 @@ using Azure.ClientGenerator.Core;
 @@access(VoiceLive.ToolChoiceFunctionObject, Access.internal, "java");
 @@clientName(VoiceLive.ToolChoiceFunctionObject, "ToolChoiceFunctionObjectInternal", "java");
 
-// Mark ContentPart as internal for Java with Internal suffix
-@@access(VoiceLive.ContentPart, Access.internal, "java");
-@@clientName(VoiceLive.ContentPart, "ContentPartInternal", "java");
-
 // Mark Session-related models as internal for Java with Internal suffix
 @@access(VoiceLive.RequestSession, Access.internal, "java");
 @@clientName(VoiceLive.RequestSession, "VoiceLiveSessionOptionsInternal", "java");
