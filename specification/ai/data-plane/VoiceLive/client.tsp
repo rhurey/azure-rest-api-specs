@@ -169,6 +169,11 @@ using Azure.ClientGenerator.Core;
   "csharp"
 );
 @@access(VoiceLive.ServerEventResponseMcpCallFailed, Access.public, "csharp");
+@@access(VoiceLive.ServerEventResponseFoundryAgentCallArgumentsDelta, Access.public, "csharp");
+@@access(VoiceLive.ServerEventResponseFoundryAgentCallArgumentsDone, Access.public, "csharp");
+@@access(VoiceLive.ServerEventResponseFoundryAgentCallInProgress, Access.public, "csharp");
+@@access(VoiceLive.ServerEventResponseFoundryAgentCallCompleted, Access.public, "csharp");
+@@access(VoiceLive.ServerEventResponseFoundryAgentCallFailed, Access.public, "csharp");
 @@access(VoiceLive.MCPApprovalResponseRequestItem, Access.internal, "csharp");
 
 
@@ -413,6 +418,26 @@ using Azure.ClientGenerator.Core;
   "SessionUpdateResponseMcpCallFailed",
   "csharp"
 );
+@@clientName(VoiceLive.ServerEventResponseFoundryAgentCallArgumentsDelta,
+  "SessionUpdateResponseFoundryAgentCallArgumentsDelta",
+  "csharp"
+);
+@@clientName(VoiceLive.ServerEventResponseFoundryAgentCallArgumentsDone,
+  "SessionUpdateResponseFoundryAgentCallArgumentsDone",
+  "csharp"
+);
+@@clientName(VoiceLive.ServerEventResponseFoundryAgentCallInProgress,
+  "SessionUpdateResponseFoundryAgentCallInProgress",
+  "csharp"
+);
+@@clientName(VoiceLive.ServerEventResponseFoundryAgentCallCompleted,
+  "SessionUpdateResponseFoundryAgentCallCompleted",
+  "csharp"
+);
+@@clientName(VoiceLive.ServerEventResponseFoundryAgentCallFailed,
+  "SessionUpdateResponseFoundryAgentCallFailed",
+  "csharp"
+);
 @@clientName(VoiceLive.ResponseMCPListToolItem,
   "SessionResponseMcpListToolItem",
   "csharp"
@@ -429,8 +454,13 @@ using Azure.ClientGenerator.Core;
   "SessionResponseMcpApprovalResponseItem",
   "csharp"
 );
+@@clientName(VoiceLive.ResponseFoundryAgentCallItem,
+  "SessionResponseFoundryAgentCallItem",
+  "csharp"
+);
 @@clientName(VoiceLive.MCPServer, "VoiceLiveMcpServerDefinition", "csharp");
 @@clientName(VoiceLive.MCPTool, "VoiceLiveMcpTool", "csharp");
+@@clientName(VoiceLive.FoundryAgentTool, "VoiceLiveFoundryAgentDefinition", "csharp");
 @@clientName(VoiceLive.Background, "VideoBackground", "csharp");
 @@alternateType(VoiceLive.RequestSession.turn_detection, unknown, "csharp");
 
